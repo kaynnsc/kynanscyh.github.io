@@ -1,66 +1,117 @@
-/* Reset margin/padding */
-* {
-  box-sizing: border-box;
+body, html {
   margin: 0;
   padding: 0;
-}
-
-body {
-  font-family: sans-serif;
-  background: #f4f4f4;
-}
-
-header {
-  background: #0055ff;
+  height: 100%;
+  font-family: 'Helvetica Neue', sans-serif;
   color: white;
-  padding: 1em 2em;
-  text-align: center;
+  background: linear-gradient(135deg, #0d1b2a, #1b263b);
+  overflow-x: hidden;
 }
 
-.container {
+.hero {
+  position: relative;
   display: flex;
-  min-height: 90vh; /* Fill most of the screen height */
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  padding: 0 5%;
 }
 
-/* Sidebar styling */
-.sidebar {
-  background: #333;
-  color: white;
-  width: 220px;
-  padding: 2em 1em;
+.left-content h1 {
+  font-size: 4em;
+  line-height: 1.1;
+  letter-spacing: 2px;
 }
 
-.sidebar ul {
-  list-style: none;
+.left-content h1 span {
+  color: #ffffff;
 }
 
-.sidebar li {
-  margin: 1em 0;
+.left-content .line {
+  width: 50px;
+  height: 4px;
+  background: #e63946;
+  margin: 20px 0;
 }
 
-.sidebar a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
+.left-content p {
+  font-size: 1.2em;
+  letter-spacing: 1px;
 }
 
-.sidebar a:hover {
-  text-decoration: underline;
-}
-
-/* Main content styling */
-.content {
+.right-content {
   flex: 1;
-  background: white;
-  padding: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Responsive behavior */
+.moon {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f1faee, #a8dadc);
+  box-shadow: 0 0 50px rgba(255,255,255,0.2);
+  position: relative;
+}
+
+/* Example moon "craters" */
+.moon::before, .moon::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(200,200,200,0.4);
+}
+
+.moon::before {
+  width: 50px; height: 50px;
+  top: 60px; left: 100px;
+}
+
+.moon::after {
+  width: 30px; height: 30px;
+  top: 150px; left: 200px;
+}
+
+.scroll-text {
+  position: absolute;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  left: 10px;
+  bottom: 50px;
+  font-size: 0.8em;
+  letter-spacing: 4px;
+  color: #ccc;
+}
+
+.social-icons {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+}
+
+.social-icons a {
+  color: white;
+  margin-left: 20px;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #e63946;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .container {
+  .hero {
     flex-direction: column;
+    text-align: center;
   }
-  .sidebar {
-    width: 100%;
+  .right-content {
+    margin-top: 30px;
+  }
+  .scroll-text {
+    left: auto;
+    right: 10px;
   }
 }
