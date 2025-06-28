@@ -243,7 +243,6 @@ window.addEventListener("scroll", () => {
   })
 })
 
-// Add active link styles
 const navStyle = document.createElement("style")
 navStyle.textContent = `
     .navbar-nav .nav-link.active {
