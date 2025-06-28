@@ -9,15 +9,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#home">{'<YourName />'}</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="fas fa-code text-primary me-2"></i>YourName
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -27,9 +31,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#projects">Projects</a>
@@ -42,407 +43,27 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section d-flex align-items-center">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="hero-content">
-                        <h1 class="display-4 fw-bold mb-3">
-                            Hi, I'm <span class="text-primary">Your Name</span>
-                        </h1>
-                        <h2 class="h4 text-muted mb-4">Full Stack Developer</h2>
-                        <p class="lead mb-4">
-                            I create amazing web experiences with modern technologies. 
-                            Passionate about clean code and innovative solutions.
-                        </p>
-                        <div class="hero-buttons">
-                            <a href="#projects" class="btn btn-primary btn-lg me-3">View My Work</a>
-                            <a href="#contact" class="btn btn-outline-primary btn-lg">Get In Touch</a>
-                        </div>
-                        <div class="social-links mt-4">
-                            <a href="https://github.com/yourusername" class="social-link me-3" target="_blank">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://linkedin.com/in/yourusername" class="social-link me-3" target="_blank">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="https://twitter.com/yourusername" class="social-link me-3" target="_blank">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="mailto:your.email@example.com" class="social-link" target="_blank">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <!-- Profile Section -->
+                <div class="profile-section text-center mb-4">
+                    <div class="profile-image-container">
+                        <img src="/placeholder.svg?height=120&width=120" alt="Profile" class="profile-img">
+                        <div class="status-indicator"></div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="hero-image text-center">
-                        <div class="profile-container">
-                            <img src="/placeholder.svg?height=400&width=400" alt="Profile" class="profile-img">
-                            <div class="floating-elements">
-                                <div class="floating-element" style="--delay: 0s;">
-                                    <i class="fab fa-js-square"></i>
-                                </div>
-                                <div class="floating-element" style="--delay: 1s;">
-                                    <i class="fab fa-react"></i>
-                                </div>
-                                <div class="floating-element" style="--delay: 2s;">
-                                    <i class="fab fa-node-js"></i>
-                                </div>
-                                <div class="floating-element" style="--delay: 3s;">
-                                    <i class="fab fa-python"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <h2 class="section-title">About Me</h2>
-                    <p class="section-subtitle">Get to know me better</p>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="about-content">
-                        <h3 class="mb-4">I'm a passionate developer who loves creating digital solutions</h3>
-                        <p class="mb-4">
-                            With over X years of experience in web development, I specialize in creating 
-                            responsive, user-friendly applications using modern technologies. I'm always 
-                            eager to learn new technologies and take on challenging projects.
-                        </p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="list-unstyled">
-                                    <li class="mb-2"><strong>Name:</strong> Your Full Name</li>
-                                    <li class="mb-2"><strong>Location:</strong> Your City, Country</li>
-                                    <li class="mb-2"><strong>Experience:</strong> X+ Years</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="list-unstyled">
-                                    <li class="mb-2"><strong>Email:</strong> your.email@example.com</li>
-                                    <li class="mb-2"><strong>Phone:</strong> +1 (555) 123-4567</li>
-                                    <li class="mb-2"><strong>Freelance:</strong> Available</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <a href="/placeholder.svg?height=100&width=200" class="btn btn-primary mt-3" download>
-                            <i class="fas fa-download me-2"></i>Download Resume
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="about-stats">
-                        <div class="row">
-                            <div class="col-6 mb-4">
-                                <div class="stat-card text-center">
-                                    <div class="stat-number" data-target="50">0</div>
-                                    <div class="stat-label">Projects Completed</div>
-                                </div>
-                            </div>
-                            <div class="col-6 mb-4">
-                                <div class="stat-card text-center">
-                                    <div class="stat-number" data-target="25">0</div>
-                                    <div class="stat-label">Happy Clients</div>
-                                </div>
-                            </div>
-                            <div class="col-6 mb-4">
-                                <div class="stat-card text-center">
-                                    <div class="stat-number" data-target="3">0</div>
-                                    <div class="stat-label">Years Experience</div>
-                                </div>
-                            </div>
-                            <div class="col-6 mb-4">
-                                <div class="stat-card text-center">
-                                    <div class="stat-number" data-target="100">0</div>
-                                    <div class="stat-label">GitHub Repos</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <h2 class="section-title">Skills & Technologies</h2>
-                    <p class="section-subtitle">Technologies I work with</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <h4 class="mb-4">Technical Skills</h4>
-                    <div class="skill-item mb-4">
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>JavaScript</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" data-width="90"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item mb-4">
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>React.js</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" data-width="85"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item mb-4">
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Node.js</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" data-width="80"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item mb-4">
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Python</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" data-width="75"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <h4 class="mb-4">Tools & Frameworks</h4>
-                    <div class="skills-grid">
-                        <div class="skill-badge">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML5</span>
-                        </div>
-                        <div class="skill-badge">
-                            <i class="fab fa-css3-alt"></i>
-                            <span>CSS3</span>
-                        </div>
-                        <div class="skill-badge">
-                            <i class="fab fa-bootstrap"></i>
-                            <span>Bootstrap</span>
-                        </div>
-                        <div class="skill-badge">
-                            <i class="fab fa-sass"></i>
-                            <span>Sass</span>
-                        </div>
-                        <div class="skill-badge">
-                            <i class="fab fa-git-alt"></i>
-                            <span>Git</span>
-                        </div>
-                        <div class="skill-badge">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
-                        </div>
-                        <div class="skill-badge">
-                            <i class="fab fa-docker"></i>
-                            <span>Docker</span>
-                        </div>
-                        <div class="skill-badge">
-                            <i class="fas fa-database"></i>
-                            <span>MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <h2 class="section-title">Featured Projects</h2>
-                    <p class="section-subtitle">Some of my recent work</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="/placeholder.svg?height=250&width=400" alt="Project 1" class="img-fluid">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="#" class="btn btn-light btn-sm me-2" target="_blank">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-light btn-sm" target="_blank">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h5 class="project-title">E-Commerce Platform</h5>
-                            <p class="project-description">
-                                A full-stack e-commerce solution built with React, Node.js, and MongoDB.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">MongoDB</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="/placeholder.svg?height=250&width=400" alt="Project 2" class="img-fluid">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="#" class="btn btn-light btn-sm me-2" target="_blank">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-light btn-sm" target="_blank">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h5 class="project-title">Task Management App</h5>
-                            <p class="project-description">
-                                A collaborative task management application with real-time updates.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Vue.js</span>
-                                <span class="tech-tag">Express</span>
-                                <span class="tech-tag">Socket.io</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="/placeholder.svg?height=250&width=400" alt="Project 3" class="img-fluid">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="#" class="btn btn-light btn-sm me-2" target="_blank">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-light btn-sm" target="_blank">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h5 class="project-title">Weather Dashboard</h5>
-                            <p class="project-description">
-                                A responsive weather dashboard with location-based forecasts.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">API</span>
-                                <span class="tech-tag">Bootstrap</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-4">
-                <a href="https://github.com/yourusername" class="btn btn-outline-primary" target="_blank">
-                    View All Projects on GitHub
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-5 bg-dark text-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <h2 class="section-title text-white">Get In Touch</h2>
-                    <p class="section-subtitle text-light">Let's work together on your next project</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <form id="contactForm" class="contact-form">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <input type="email" class="form-control" id="email" placeholder="Your Email" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="subject" placeholder="Subject" required>
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" id="message" rows="5" placeholder="Your Message" required></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg">
-                                <i class="fas fa-paper-plane me-2"></i>Send Message
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-lg-4 text-center mb-4">
-                    <div class="contact-info">
-                        <i class="fas fa-envelope fa-2x mb-3 text-primary"></i>
-                        <h5>Email</h5>
-                        <p>your.email@example.com</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center mb-4">
-                    <div class="contact-info">
-                        <i class="fas fa-phone fa-2x mb-3 text-primary"></i>
-                        <h5>Phone</h5>
-                        <p>+1 (555) 123-4567</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center mb-4">
-                    <div class="contact-info">
-                        <i class="fas fa-map-marker-alt fa-2x mb-3 text-primary"></i>
-                        <h5>Location</h5>
-                        <p>Your City, Country</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0">© 2024 Your Name. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
+                    <h3 class="profile-name mt-3">Your Name</h3>
+                    <p class="profile-title">Full Stack Developer</p>
                     <div class="social-links">
-                        <a href="https://github.com/yourusername" class="social-link me-3" target="_blank">
+                        <a href="https://github.com/yourusername" class="social-link" target="_blank">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://linkedin.com/in/yourusername" class="social-link me-3" target="_blank">
+                        <a href="https://linkedin.com/in/yourusername" class="social-link" target="_blank">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="https://twitter.com/yourusername" class="social-link me-3" target="_blank">
+                        <a href="https://twitter.com/yourusername" class="social-link" target="_blank">
                             <i class="fab fa-twitter"></i>
                         </a>
                         <a href="mailto:your.email@example.com" class="social-link" target="_blank">
@@ -450,9 +71,267 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- About Section -->
+                <div class="sidebar-section" id="about">
+                    <h4 class="section-title">
+                        <i class="fas fa-user me-2"></i>About Me
+                    </h4>
+                    <p class="section-text">
+                        Hi! I'm a passionate developer who loves creating beautiful and functional web applications. 
+                        I enjoy learning new technologies and solving complex problems.
+                    </p>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Your City, Country</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-birthday-cake"></i>
+                            <span>25 years old</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Computer Science</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="sidebar-section">
+                    <h4 class="section-title">
+                        <i class="fas fa-code me-2"></i>Skills
+                    </h4>
+                    <div class="skills-container">
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">React</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Node.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-badges mt-3">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">Bootstrap</span>
+                        <span class="tech-badge">Git</span>
+                        <span class="tech-badge">MongoDB</span>
+                        <span class="tech-badge">Docker</span>
+                    </div>
+                </div>
+
+                <!-- Projects Section -->
+                <div class="sidebar-section" id="projects">
+                    <h4 class="section-title">
+                        <i class="fas fa-folder me-2"></i>Featured Projects
+                    </h4>
+                    <div class="project-list">
+                        <div class="project-item">
+                            <div class="project-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="project-info">
+                                <h6 class="project-name">E-Commerce App</h6>
+                                <p class="project-desc">React & Node.js</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-item">
+                            <div class="project-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <div class="project-info">
+                                <h6 class="project-name">Task Manager</h6>
+                                <p class="project-desc">Vue.js & Express</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-item">
+                            <div class="project-icon">
+                                <i class="fas fa-cloud-sun"></i>
+                            </div>
+                            <div class="project-info">
+                                <h6 class="project-name">Weather App</h6>
+                                <p class="project-desc">JavaScript & API</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://github.com/yourusername" class="btn btn-outline-primary btn-sm w-100 mt-3" target="_blank">
+                        <i class="fab fa-github me-2"></i>View All Projects
+                    </a>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="sidebar-section" id="contact">
+                    <h4 class="section-title">
+                        <i class="fas fa-envelope me-2"></i>Get In Touch
+                    </h4>
+                    <form id="contactForm" class="contact-form">
+                        <div class="mb-3">
+                            <input type="text" class="form-control form-control-sm" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control form-control-sm" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control form-control-sm" id="message" rows="3" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm w-100">
+                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                        </button>
+                    </form>
+                    
+                    <div class="contact-info mt-3">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>your.email@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Your City, Country</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </footer>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <!-- Hero Banner -->
+            <section class="hero-banner" id="home">
+                <div class="hero-overlay">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            Welcome to My Digital World! 
+                            <span class="wave">👋</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            I craft beautiful web experiences with passion and creativity
+                        </p>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Projects</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">3+</div>
+                                <div class="stat-label">Years</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">25+</div>
+                                <div class="stat-label">Clients</div>
+                            </div>
+                        </div>
+                        <div class="hero-buttons">
+                            <a href="#projects" class="btn btn-primary btn-cute">
+                                <i class="fas fa-rocket me-2"></i>View My Work
+                            </a>
+                            <a href="#contact" class="btn btn-outline-light btn-cute">
+                                <i class="fas fa-coffee me-2"></i>Let's Chat
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                    <div class="shape shape-4"></div>
+                </div>
+            </section>
+
+            <!-- Additional Content Area -->
+            <section class="content-section">
+                <div class="container-fluid p-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="welcome-card">
+                                <h2 class="welcome-title">
+                                    <i class="fas fa-heart text-danger me-2"></i>
+                                    Thanks for visiting!
+                                </h2>
+                                <p class="welcome-text">
+                                    I'm always excited to work on new projects and meet amazing people. 
+                                    Feel free to explore my work and don't hesitate to reach out if you'd like to collaborate!
+                                </p>
+                                <div class="fun-facts">
+                                    <div class="fun-fact">
+                                        <i class="fas fa-coffee"></i>
+                                        <span>Coffee Lover</span>
+                                    </div>
+                                    <div class="fun-fact">
+                                        <i class="fas fa-music"></i>
+                                        <span>Music Enthusiast</span>
+                                    </div>
+                                    <div class="fun-fact">
+                                        <i class="fas fa-gamepad"></i>
+                                        <span>Gamer</span>
+                                    </div>
+                                    <div class="fun-fact">
+                                        <i class="fas fa-camera"></i>
+                                        <span>Photography</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Mobile Toggle Button -->
+    <button class="mobile-sidebar-toggle d-lg-none" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -4,10 +4,19 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     e.preventDefault()
     const target = document.querySelector(this.getAttribute("href"))
     if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      })
+      // For sidebar sections, just scroll within sidebar
+      if (target.closest(".sidebar")) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        })
+      } else {
+        // For main content, scroll the main area
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        })
+      }
     }
   })
 })
@@ -96,42 +105,47 @@ document.querySelectorAll("section").forEach((section) => {
 })
 
 // Contact form handling
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault()
+function initializeContactForm() {
+  const contactForm = document.getElementById("contactForm")
 
-  // Get form data
-  const name = document.getElementById("name").value
-  const email = document.getElementById("email").value
-  const subject = document.getElementById("subject").value
-  const message = document.getElementById("message").value
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault()
 
-  // Simple validation
-  if (!name || !email || !subject || !message) {
-    alert("Please fill in all fields")
-    return
+      // Get form data
+      const name = document.getElementById("name").value.trim()
+      const email = document.getElementById("email").value.trim()
+      const message = document.getElementById("message").value.trim()
+
+      // Simple validation
+      if (!name || !email || !message) {
+        showNotification("Please fill in all fields! 📝", "warning")
+        return
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(email)) {
+        showNotification("Please enter a valid email address! 📧", "warning")
+        return
+      }
+
+      // Simulate form submission
+      const submitBtn = this.querySelector('button[type="submit"]')
+      const originalText = submitBtn.innerHTML
+
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...'
+      submitBtn.disabled = true
+
+      setTimeout(() => {
+        showNotification("Thank you for your message! I'll get back to you soon! 🚀", "success")
+        this.reset()
+        submitBtn.innerHTML = originalText
+        submitBtn.disabled = false
+      }, 2000)
+    })
   }
-
-  // Email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  if (!emailRegex.test(email)) {
-    alert("Please enter a valid email address")
-    return
-  }
-
-  // Simulate form submission
-  const submitBtn = this.querySelector('button[type="submit"]')
-  const originalText = submitBtn.innerHTML
-
-  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...'
-  submitBtn.disabled = true
-
-  setTimeout(() => {
-    alert("Thank you for your message! I'll get back to you soon.")
-    this.reset()
-    submitBtn.innerHTML = originalText
-    submitBtn.disabled = false
-  }, 2000)
-})
+}
 
 // Scroll to top button
 const scrollTopBtn = document.createElement("a")
@@ -222,27 +236,32 @@ document.head.appendChild(particleStyle)
 createParticles()
 
 // Active navigation link highlighting
-window.addEventListener("scroll", () => {
-  const sections = document.querySelectorAll("section[id]")
+function initializeActiveNavigation() {
   const navLinks = document.querySelectorAll(".navbar-nav .nav-link")
 
-  let current = ""
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop
-    const sectionHeight = section.clientHeight
-    if (scrollY >= sectionTop - 200) {
-      current = section.getAttribute("id")
-    }
-  })
+  // Update active nav on scroll
+  window.addEventListener("scroll", () => {
+    let current = ""
+    const sections = document.querySelectorAll("section[id], .sidebar-section[id]")
 
-  navLinks.forEach((link) => {
-    link.classList.remove("active")
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active")
-    }
-  })
-})
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop
+      const sectionHeight = section.clientHeight
+      if (scrollY >= sectionTop - 200) {
+        current = section.getAttribute("id")
+      }
+    })
 
+    navLinks.forEach((link) => {
+      link.classList.remove("active")
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active")
+      }
+    })
+  })
+}
+
+// Add active link styles
 const navStyle = document.createElement("style")
 navStyle.textContent = `
     .navbar-nav .nav-link.active {
@@ -251,5 +270,288 @@ navStyle.textContent = `
     }
 `
 document.head.appendChild(navStyle)
+
+// Notification system
+function showNotification(message, type = "info") {
+  // Remove existing notifications
+  const existingNotification = document.querySelector(".cute-notification")
+  if (existingNotification) {
+    existingNotification.remove()
+  }
+
+  // Create notification element
+  const notification = document.createElement("div")
+  notification.className = `cute-notification cute-notification-${type}`
+  notification.innerHTML = `
+        <div class="notification-content">
+            <span class="notification-message">${message}</span>
+            <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    `
+
+  // Add notification styles
+  const notificationStyles = `
+        .cute-notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: white;
+            border-radius: 15px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            transform: translateX(400px);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 350px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .cute-notification-success {
+            border-left-color: var(--success-color);
+        }
+        
+        .cute-notification-warning {
+            border-left-color: var(--warning-color);
+        }
+        
+        .cute-notification-danger {
+            border-left-color: var(--danger-color);
+        }
+        
+        .cute-notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .notification-message {
+            color: var(--dark-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            color: var(--gray-600);
+            cursor: pointer;
+            margin-left: 1rem;
+            padding: 0;
+            font-size: 0.8rem;
+            transition: color 0.2s ease;
+        }
+        
+        .notification-close:hover {
+            color: var(--dark-color);
+        }
+    `
+
+  // Add styles if not already added
+  if (!document.querySelector("#notification-styles")) {
+    const styleSheet = document.createElement("style")
+    styleSheet.id = "notification-styles"
+    styleSheet.textContent = notificationStyles
+    document.head.appendChild(styleSheet)
+  }
+
+  // Add to DOM and show
+  document.body.appendChild(notification)
+
+  // Trigger animation
+  setTimeout(() => {
+    notification.classList.add("show")
+  }, 100)
+
+  // Auto remove after 5 seconds
+  setTimeout(() => {
+    if (notification.parentElement) {
+      notification.style.transform = "translateX(400px)"
+      setTimeout(() => {
+        if (notification.parentElement) {
+          notification.remove()
+        }
+      }, 300)
+    }
+  }, 5000)
+}
+
+// Add some fun interactions
+function addFunInteractions() {
+  // Add hover effect to profile image
+  const profileImg = document.querySelector(".profile-img")
+  if (profileImg) {
+    profileImg.addEventListener("mouseenter", function () {
+      this.style.transform = "scale(1.05) rotate(5deg)"
+    })
+
+    profileImg.addEventListener("mouseleave", function () {
+      this.style.transform = "scale(1) rotate(0deg)"
+    })
+  }
+
+  // Add click effect to social links
+  const socialLinks = document.querySelectorAll(".social-link")
+  socialLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      // Create ripple effect
+      const ripple = document.createElement("span")
+      ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            `
+
+      const rect = this.getBoundingClientRect()
+      const size = Math.max(rect.width, rect.height)
+      ripple.style.width = ripple.style.height = size + "px"
+      ripple.style.left = e.clientX - rect.left - size / 2 + "px"
+      ripple.style.top = e.clientY - rect.top - size / 2 + "px"
+
+      this.style.position = "relative"
+      this.appendChild(ripple)
+
+      setTimeout(() => {
+        ripple.remove()
+      }, 600)
+    })
+  })
+
+  // Add ripple animation CSS
+  const rippleStyle = document.createElement("style")
+  rippleStyle.textContent = `
+        @keyframes ripple {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+    `
+  document.head.appendChild(rippleStyle)
+}
+
+// Initialize fun interactions
+addFunInteractions()
+
+// Add some easter eggs
+let clickCount = 0
+document.querySelector(".profile-img")?.addEventListener("click", () => {
+  clickCount++
+  if (clickCount === 5) {
+    showNotification("🎉 You found the easter egg! You're awesome!", "success")
+    clickCount = 0
+  }
+})
+
+// Keyboard shortcuts
+document.addEventListener("keydown", (e) => {
+  // Press 'h' to go to home
+  if (e.key === "h" && !e.ctrlKey && !e.metaKey) {
+    const homeSection = document.querySelector("#home")
+    if (homeSection && !document.activeElement.matches("input, textarea")) {
+      homeSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
+  // Press 'c' to focus contact form
+  if (e.key === "c" && !e.ctrlKey && !e.metaKey) {
+    const nameInput = document.querySelector("#name")
+    if (nameInput && !document.activeElement.matches("input, textarea")) {
+      nameInput.focus()
+    }
+  }
+})
+
+// Add loading animation
+window.addEventListener("load", () => {
+  document.body.style.opacity = "0"
+  document.body.style.transition = "opacity 0.5s ease"
+
+  setTimeout(() => {
+    document.body.style.opacity = "1"
+  }, 100)
+})
+
+// DOM Content Loaded
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize all animations and interactions
+  initializeSkillBars()
+  initializeContactForm()
+  initializeActiveNavigation()
+
+  console.log("🎉 Cute portfolio loaded successfully!")
+})
+
+// Animate skill bars when they come into view
+function initializeSkillBars() {
+  const skillBars = document.querySelectorAll(".skill-progress")
+
+  // Create intersection observer for skill bars
+  const skillObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const skillBar = entry.target
+          const width = skillBar.getAttribute("data-width")
+
+          // Animate the skill bar
+          setTimeout(() => {
+            skillBar.style.width = width + "%"
+          }, 200)
+
+          // Stop observing this element
+          skillObserver.unobserve(skillBar)
+        }
+      })
+    },
+    {
+      threshold: 0.5,
+    },
+  )
+
+  // Observe all skill bars
+  skillBars.forEach((bar) => {
+    skillObserver.observe(bar)
+  })
+}
+
+// Mobile sidebar functionality
+function initializeMobileSidebar() {
+  const sidebarToggle = document.getElementById("sidebarToggle")
+  const sidebar = document.querySelector(".sidebar")
+  const contentArea = document.querySelector(".content-area")
+
+  if (sidebarToggle && sidebar) {
+    sidebarToggle.addEventListener("click", function () {
+      sidebar.classList.toggle("show")
+
+      // Update toggle icon
+      const icon = this.querySelector("i")
+      if (sidebar.classList.contains("show")) {
+        icon.className = "fas fa-times"
+      } else {
+        icon.className = "fas fa-bars"
+      }
+    })
+
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener("click", (e) => {
+      if (window.innerWidth <= 991.98) {
+        if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+          sidebar.classList.remove("show")
+          sidebarToggle.querySelector("i").className = "fas fa-bars"
+        }
+      }
+    })
+  }
+}
 
 console.log("Portfolio loaded successfully! 🚀")
